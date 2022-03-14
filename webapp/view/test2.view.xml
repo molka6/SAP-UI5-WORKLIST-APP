@@ -1,0 +1,59 @@
+<core:View 
+xmlns:core="sap.ui.core" 
+xmlns:mvc="sap.ui.core.mvc" 
+xmlns="sap.m" 
+controllerName="worklist.controller.test2"
+  xmlns:html="http://www.w3.org/1999/xhtml">
+  <Page title="Grouping,Filtering,Sorting in Table">
+
+
+
+
+    <content>
+      <Table items="{/Shippers}" id="idTable" inset="true">
+        <headerToolbar>
+
+
+
+          <Toolbar>
+            <Title level="H2" text="Personal Details"/>
+            <ToolbarSpacer/>
+            <Button press="onTableSettings" icon="sap-icon://drop-down-list" tooltip="Settings"/>
+
+            <Button press="opendialog" icon="sap-icon://sort" tooltip="Settings"/>
+
+
+          </Toolbar>
+
+
+
+
+
+        </headerToolbar>
+        <columns>
+          <Column>
+            <Text text="ShipperID"/>
+          </Column>
+          <Column>
+            <Text text="CompanyName"/>
+          </Column>
+          <Column>
+            <Text text="Phone"/>
+          </Column>
+       
+        
+        </columns>
+        <items>
+          <ColumnListItem>
+            <cells>
+              <ObjectIdentifier title="{ShipperID}"/>
+              <Text text="{CompanyName}"/>
+              <Text text="{Phone}"/>
+            
+            </cells>
+          </ColumnListItem>
+        </items>
+      </Table>
+    </content>
+  </Page>
+</core:View>

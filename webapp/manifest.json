@@ -1,0 +1,221 @@
+{
+  "_version": "1.32.0",
+  "sap.app": {
+    "id": "worklist",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "mainService": {
+        "uri": "/V2/Northwind/Northwind.svc/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.98.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.f": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "worklist.i18n.i18n"
+        }
+      },
+      "invoice": {
+		"type": "sap.ui.model.json.JSONModel",
+		"uri": "Data.json"
+	  },
+
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      } 
+      
+        
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+
+
+
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "worklist.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "bypassed": {
+          "target": [
+            "notFound"
+          ]
+        },
+        "async": true
+      },
+
+
+
+
+      "routes": [
+        {
+          "pattern": "worklist",
+          "name": "worklist",
+          "target": [
+            "worklist"
+          ]
+        },
+
+
+        {
+          "pattern": "Customers/{objectId}",
+          "name": "object",
+          "target": [
+            "object"
+          ]
+        },
+
+
+
+        {
+            "pattern": "worklist1",
+            "name": "worklist1",
+            "target": [
+              "worklist1"
+            ]
+          },
+
+
+
+
+          {
+            "pattern": "Employees/{objectId}",
+            "name": "object1",
+            "target": [
+              "object1"
+            ]
+          } ,
+
+
+
+
+          {
+            "pattern": "test",
+            "name": "test",
+            "target": [
+              "test"
+            ]
+          } ,
+          {
+            "pattern": "test2",
+            "name": "test2",
+            "target": [
+              "test2"
+            ]
+          }
+
+
+
+
+      ],
+
+
+
+
+      
+      "targets": {
+        "worklist": {
+          "viewName": "Worklist",
+          "viewId": "worklist",
+          "viewLevel": 1,
+          "title": "{i18n>worklistViewTitle}"
+        },
+
+
+        "object": {
+          "viewName": "Object",
+          "viewId": "object",
+          "viewLevel": 2,
+          "title": "{i18n>objectViewTitle}"
+        },
+
+
+
+        "objectNotFound": {
+          "viewName": "ObjectNotFound",
+          "viewId": "objectNotFound"
+        },
+
+
+        "notFound": {
+          "viewName": "NotFound",
+          "viewId": "notFound"
+        },
+
+
+        "worklist1": {
+            "viewName": "Worklist1",
+            "viewId": "worklist1"
+          } ,
+
+          
+          "object1": {
+            "viewName": "Object1",
+            "viewId": "object1"
+          } ,
+          "test": {
+            "viewName": "test",
+            "viewId": "test"
+          } ,
+          "test2": {
+            "viewName": "test2",
+            "viewId": "test2"
+          }
+      }
+    },
+    "rootView": {
+      "viewName": "worklist.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    }
+  }
+}

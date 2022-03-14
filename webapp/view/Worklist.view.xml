@@ -1,0 +1,118 @@
+<mvc:View
+    controllerName="worklist.controller.Worklist"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.f.semantic">
+
+    
+    <semantic:SemanticPage
+        id="page"
+        headerPinnable="false"
+        toggleHeaderOnTitleClick="false">
+
+       <semantic:titleBreadcrumbs>
+	         	 <mvc:XMLView viewName="worklist.view.nav"/>
+		</semantic:titleBreadcrumbs>
+
+
+        <semantic:titleCustomTextActions>
+			<Button text="ToggleFooter" press="showFooter"/>
+		</semantic:titleCustomTextActions>
+
+
+        <semantic:content>
+            <Table
+                id="table"
+                width="auto"
+                items="{
+                    path: '/Customers',
+                    sorter: {
+                        path : 'City',
+				        group : true
+                    }
+                }"
+                noDataText="{worklistView>/tableNoDataText}"
+                busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+                growing="true"
+                growingScrollToLoad="true"
+                updateFinished=".onUpdateFinished">
+
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title
+                            id="tableHeader"
+                            text="{worklistView>/worklistTableTitle}"
+                            level="H3"/>
+                        <ToolbarSpacer />
+                        <SearchField
+                            id="searchField"
+                            tooltip="{i18n>worklistSearchTooltip}"
+                            search=".onSearch">
+                            <layoutData>
+                                <OverflowToolbarLayoutData
+                                    maxWidth="200px"
+                                    priority="NeverOverflow"/>
+                            </layoutData>
+                        </SearchField>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column id="nameColumn"><Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/></Column>
+                    <Column id="_IDGenColumn1" ><Text id="_IDGenText1" text="CompanyName"/></Column>
+                    <Column id="_IDGenColumn3" ><Text id="_IDGenText3"  text="ContactName"/> </Column>
+                    <Column id="_IDGenColumn4"  ><Text id="_IDGenText4"  text="ContactTitle"/></Column>
+                    <Column id="_IDGenColumn5"  ><Text id="_IDGenText5"  text="Address"/></Column>
+                    <Column id="_IDGenColumn6"  ><Text id="_IDGenText6"  text="City"/></Column> 
+             
+                    <Column id="_IDGenColumn8"  hAlign="End"><Text id="_IDGenText8" text=""/> </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem
+                        type="Navigation"
+                        press=".onPress">
+                        <cells><ObjectIdentifier id="_IDGenObjectIdentifier1" title="{CustomerID}"/></cells>
+                        <cells><ObjectIdentifier id="_IDGenObjectIdentifier2" title="{CompanyName}"/></cells>
+                        <cells><ObjectIdentifier id="_IDGenObjectIdentifier3" title="{ContactName}"/></cells>
+                        <cells><ObjectIdentifier id="_IDGenObjectIdentifier4" title="{ContactTitle}"/></cells>
+                        <cells><ObjectIdentifier id="_IDGenObjectIdentifier5" title="{Address}"/></cells>
+                        <cells><ObjectIdentifier id="_IDGenObjectIdentifier6" title="{City}"/></cells>
+                 
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </semantic:content>
+
+        <semantic:sendEmailAction>
+            <semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+        </semantic:sendEmailAction>
+
+
+
+	<!-- Semantic Footer Buttons -->
+		<semantic:positiveAction>
+			<semantic:PositiveAction />
+		</semantic:positiveAction>
+
+		<semantic:negativeAction>
+			<semantic:NegativeAction />
+		</semantic:negativeAction>
+
+		<semantic:messagesIndicator>
+			<semantic:MessagesIndicator press="onMessagesButtonPress"/>
+		</semantic:messagesIndicator>
+
+		<!-- Custom Footer Content-->
+		<semantic:footerCustomActions>
+			<Button text="Save" />
+			<Button text="Cancel" />
+		</semantic:footerCustomActions>
+
+
+
+
+
+
+    </semantic:SemanticPage>
+
+</mvc:View>

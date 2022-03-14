@@ -1,0 +1,13 @@
+<mvc:View
+controllerName="worklist.controller.nav" 
+
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc">
+   <Breadcrumbs id="_IDGenBreadcrumbs1">
+				<Link id="_IDGenLink1" text="Customers" press="CustomersLinkPress" />
+				<Link id="_IDGenLink2" text="Employees" press="EmployeesLinkPress" />
+				<Link id="_IDGenLink3" text="test"  press="NavTotest"/>
+                <Link id="_IDGenLink4" text="test2"  press="NavTotest2"/>
+				
+</Breadcrumbs>
+</mvc:View>
